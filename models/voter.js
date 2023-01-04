@@ -8,9 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
 
-    resetPass(password) {
-      return this.update({ password });
-    }
+   
 
     static async createVoter({ voterid, password, electionID }) {
       return await this.create({

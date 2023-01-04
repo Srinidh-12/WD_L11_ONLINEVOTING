@@ -8,9 +8,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
 
-    resetPass(password) {
-      return this.update({ password });
-    }
 
     static createAdmin({ firstName, lastName, email, password }) {
       return this.create({
