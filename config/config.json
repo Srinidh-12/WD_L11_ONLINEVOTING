@@ -2,14 +2,14 @@
   "development": {
     "username": "postgres",
     "password": "test123",
-    "database": "wd lev 7",
+    "database": "Todo_manager_render",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "test123",
-    "database": "wd lev 7",
+    "database": "Todo_manager_render",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
