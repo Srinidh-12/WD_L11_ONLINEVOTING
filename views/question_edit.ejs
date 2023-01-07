@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="<%= csrfToken %>">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../public/css/style.css">  
     <title>Edit question</title>
     <script>
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
@@ -30,6 +31,14 @@
         }
     </script>
 </head>
+<style>
+    body {
+       background:url("images/ques.jpg");
+       background-repeat: no-repeat;
+       background-size: cover;
+       width: 100%;
+    }
+</style>
 <body class="bg-black-50">
     <%- include('header.ejs') %>
     <div class="flex gap-1 mx-10 mt-6 bg-black-50">
