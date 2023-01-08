@@ -17,17 +17,14 @@
     }
 </style>
 <body>
-    <div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 ">
-        <div class="relative sm:w-96 mx-auto ">
-           <div>
-        </div>
-           <div style="background-color: lightsalmon;">
+    <div>
+           <div class="flex justify-center" >
                 <form action="/admin" method="post" class="px-8 py-6">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <table>
                 <tr>
                     <td>
-                        <span class="text-2xl font-semibold text-center flex justify-center">Create Your admin account</span>
+                        <span class="text-3xl font-semibold text-center flex justify-center">Create Your admin account</span>
                     </td>
                 </tr>
                 <tr>
@@ -76,8 +73,5 @@
                   <% } %>      
             </div>
         </table>
-            
-    </div>
-    </div>
 </body>
 </html>

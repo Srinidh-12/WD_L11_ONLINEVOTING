@@ -15,39 +15,44 @@
        width: 100%; 
     }
  </style>
-<body class="bg-white-50">
+<body >
     <nav>
-        <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <div class="flex justify-center">
           <a href="/" class="py-2 px-4 flex items-center">
-            <span class="self-center flrx justify-center text-2xl font-semibold whitespace-nowrap text-white-800">welcome to online voting system</span>
+            <span class="self-center flex justify-center text-3xl font-semibold whitespace-nowrap text-white-800">welcome to online voting system</span>
           </a>
         </div>
     </nav>
-    <div class=" flex  text-gray-800 antialiased flex-col  overflow-hidden bg-gray-50 py-6 sm:py-12">
-        <div class=" py-3 sm:w-96 mx-auto text-center">
-            
-            <div>
+    <div class="flex justify-center">
                 <% if (messages && messages.error && messages.error.length > 0) { %>
                     <% for(var i=0; i<messages.error.length; i++) { %>
                         <p class="bg-blue-100 my-3 list-none rounded-md px-4 py-2"><%= messages.error[i] %></p>
                     <% } %>
                 <% } %>
             </div>
-            <div class="mt-4 bg-white shadow-md text-left">
+            <div >
                 <span class="text-2xl font-semibold flex justify-center">Login to your account</span>
                 <form action="/session" method="post" class="px-8 py-6">
+                <table class="flex justify-center" >
+                    <tr><td>
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                     <label for="email" class="block mt-3 font-semibold">Email</label>
-                    <input id="email" name="email" type="email" placeholder="Email" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" required>
+                </td></tr>
+                <tr><td>
+                    <input id="email" name="email" type="email" placeholder="Email" class="border w-fit h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" required>
                     <label for="password" class="block mt-3 font-semibold">Password</label>
-                    <input id="password" name="password" type="password" placeholder="Password" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" required>
-                    <button type="submit" class="mt-6 w-full bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 ">Login</button>
+                </td></tr>
+                <tr><td>
+                    <input id="password" name="password" type="password" placeholder="Password" class="border w-fit h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" required><br>
+                    <button type="submit" class="mt-6 w-fit bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 ">Login</button>
+                </td></tr>
                 </form>
-            </div>
+                <tr><td>
             <div class="mt-5">
                 <a href="/signup" class="text-2xl hover:text-blue-400">Don't have an account? Sign up</a>
             </div>
-        </div>
+        </tr></td>
+        </table>
     </div>
 </body>
 </html>

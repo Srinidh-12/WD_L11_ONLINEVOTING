@@ -747,7 +747,7 @@ app.get(
         );
       }
 
-      return response.render("vote_preview", {
+      return response.render("preview vote", {
         title: election.electionName,
         electionID: request.params.electionID,
         questions,
