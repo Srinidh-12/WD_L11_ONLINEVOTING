@@ -75,7 +75,7 @@ passport.deserializeUser((id, done) => {
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
-//landing page
+
 app.get("/", (request, response) => {
   if (request.user) {
     return response.redirect("/elections");
@@ -87,7 +87,7 @@ app.get("/", (request, response) => {
   }
 });
 
-//elections home page
+//The home page
 app.get(
   "/elections",
   connectEnsureLogin.ensureLoggedIn(),
@@ -113,7 +113,7 @@ app.get(
   }
 );
 
-//signup page
+//The signup page
 app.get("/signup", (request, response) => {
   response.render("signup", {
     title: "Create admin account",
@@ -121,7 +121,7 @@ app.get("/signup", (request, response) => {
   });
 });
 
-//create user account
+//creating a user account
 app.post("/admin", async (request, response) => {
   if (!request.body.firstName) {
     request.flash("error", "Please enter your first name");
@@ -161,7 +161,7 @@ app.post("/admin", async (request, response) => {
   }
 });
 
-//login page
+//The login page
 app.get("/login", (request, response) => {
   if (request.user) {
     return response.redirect("/elections");
@@ -172,7 +172,7 @@ app.get("/login", (request, response) => {
   });
 });
 
-//login user
+//user login
 app.post(
   "/session",
   passport.authenticate("local", {
@@ -194,62 +194,8 @@ app.get("/signout", (request, response, next) => {
   });
 });
 
-//password reset page
-app.get(
-  "/password-reset",
-  connectEnsureLogin.ensureLoggedIn(),
-  (request, response) => {
-    response.render("password-reset", {
-      title: "Reset your password",
-      csrfToken: request.csrfToken(),
-    });
-  }
-);
 
-//reset user password
-app.post(
-  "/password-reset",
-  connectEnsureLogin.ensureLoggedIn(),
-  async (request, response) => {
-    if (!request.body.old_password) {
-      request.flash("error", "Please enter your old password");
-      return response.redirect("/password-reset");
-    }
-    if (!request.body.new_password) {
-      request.flash("error", "Please enter a new password");
-      return response.redirect("/password-reset");
-    }
-    if (request.body.new_password.length < 8) {
-      request.flash("error", "Password length should be atleast 8");
-      return response.redirect("/password-reset");
-    }
-    const hashedNewPwd = await bcrypt.hash(
-      request.body.new_password,
-      saltRounds
-    );
-    const result = await bcrypt.compare(
-      request.body.old_password,
-      request.user.password
-    );
-    if (result) {
-      try {
-        Admin.findOne({ where: { email: request.user.email } }).then((user) => {
-          user.resetPass(hashedNewPwd);
-        });
-        request.flash("success", "Password changed successfully");
-        return response.redirect("/elections");
-      } catch (error) {
-        console.log(error);
-        return response.status(422).json(error);
-      }
-    } else {
-      request.flash("error", "Old password does not match");
-      return response.redirect("/password-reset");
-    }
-  }
-);
-
-//new election page
+//The new election page
 app.get(
   "/elections/create",
   connectEnsureLogin.ensureLoggedIn(),
@@ -322,7 +268,7 @@ app.get(
   }
 );
 
-//manage questions page
+//manage the questions page
 app.get(
   "/elections/:id/questions",
   connectEnsureLogin.ensureLoggedIn(),
@@ -377,7 +323,7 @@ app.get(
   }
 );
 
-//add question
+//adding a question
 app.post(
   "/elections/:id/questions/create",
   connectEnsureLogin.ensureLoggedIn(),
@@ -410,7 +356,7 @@ app.post(
   }
 );
 
-//edit question page
+//edit a question page
 app.get(
   "/elections/:electionID/questions/:questionID/edit",
   connectEnsureLogin.ensureLoggedIn(),
@@ -461,7 +407,7 @@ app.put(
   }
 );
 
-//delete question
+//deleting a question
 app.delete(
   "/elections/:electionID/questions/:questionID",
   connectEnsureLogin.ensureLoggedIn(),
@@ -548,7 +494,7 @@ app.post(
   }
 );
 
-//delete options
+//deleting options
 app.delete(
   "/options/:optionID",
   connectEnsureLogin.ensureLoggedIn(),
