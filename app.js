@@ -575,7 +575,7 @@ app.get(
         return response.redirect(`/elections/${request.params.id}/`);
       }
       const option = await Options.getOption(request.params.optionID);
-      return response.render("edit_option", {
+      return response.render("edit optn", {
         option: option.option,
         csrfToken: request.csrfToken(),
         electionID: request.params.electionID,
