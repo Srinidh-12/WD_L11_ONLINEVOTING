@@ -422,7 +422,7 @@ app.get(
         return response.redirect(`/elections/${request.params.id}/`);
       }
       const question = await Questions.getQuestion(request.params.questionID);
-      return response.render("edit_question", {
+      return response.render("question_edit", {
         electionID: request.params.electionID,
         questionID: request.params.questionID,
         questionTitle: question.question,
