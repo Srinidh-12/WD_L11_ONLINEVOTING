@@ -84,7 +84,7 @@ describe("Online voting application", function () {
     const agent = request.agent(server);
     await login(agent, "user.a@test.com", "12345678");
 
-    //create new election
+    //creating a new election
     let res = await agent.get("/elections/create");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/elections").send({
@@ -99,7 +99,7 @@ describe("Online voting application", function () {
     const electionCount = parsedGroupedResponse.elections.length;
     const latestElection = parsedGroupedResponse.elections[electionCount - 1];
 
-    //add a question
+    //adding a question
     res = await agent.get(`/elections/${latestElection.id}/questions/create`);
     csrfToken = extractCsrfToken(res);
     let response = await agent
@@ -116,7 +116,7 @@ describe("Online voting application", function () {
     const agent = request.agent(server);
     await login(agent, "user.a@test.com", "12345678");
 
-    //create new election
+    //creating a  new election
     let res = await agent.get("/elections/create");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/elections").send({
@@ -134,7 +134,7 @@ describe("Online voting application", function () {
     const latestElection =
       parsedGroupedElectionsResponse.elections[electionCount - 1];
 
-    //add a question
+    //adding  a question
     res = await agent.get(`/elections/${latestElection.id}/questions/create`);
     csrfToken = extractCsrfToken(res);
     await agent.post(`/elections/${latestElection.id}/questions/create`).send({
@@ -187,7 +187,7 @@ describe("Online voting application", function () {
     const agent = request.agent(server);
     await login(agent, "user.a@test.com", "12345678");
 
-    //create new election
+    //creating a new election
     let res = await agent.get("/elections/create");
     let csrfToken = extractCsrfToken(res);
     await agent.post("/elections").send({
@@ -205,7 +205,7 @@ describe("Online voting application", function () {
     const latestElection =
       parsedGroupedElectionsResponse.elections[electionCount - 1];
 
-    //add a question
+    //adding  a question
     res = await agent.get(`/elections/${latestElection.id}/questions/create`);
     csrfToken = extractCsrfToken(res);
     await agent.post(`/elections/${latestElection.id}/questions/create`).send({
